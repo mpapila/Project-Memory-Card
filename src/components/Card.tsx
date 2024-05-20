@@ -58,20 +58,24 @@ const Card = () => {
 
 
     return (
-        <div className="main">
-            {renderedImages.map((imageUrl, index) => {
-                return (
-                    <span id='each' key={index}>
-                        <div>
-                            <img src={imageUrl}
-                                data-index={index}
-                                onClick={handleClick}
-                            />
-                        </div>
-                    </span>
-                );
-            })}
-        </div>
+        <>
+            <div>{score}</div>
+            <div className="main">
+                {renderedImages.map((imageUrl, index) => {
+                    return (
+                        <span id='each' key={index}>
+                            <div>
+                                <img src={imageUrl}
+                                    data-index={index}
+                                    onClick={handleClick}
+                                />
+                            </div>
+                        </span>
+                    );
+                })}
+            </div>
+        </>
+
     );
 };
 
