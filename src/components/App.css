@@ -1,0 +1,13 @@
+.main {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+}
+
+#each {
+    height: 148px;
+    border: 1px black solid;
+}
+
+#each img {
+    width: 100%;
+}
