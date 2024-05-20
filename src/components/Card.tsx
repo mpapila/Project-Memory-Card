@@ -16,6 +16,7 @@ const Card = () => {
     const [clickedImages, setClickedImages] = useState<string[]>([]); // State to keep track of clicked images
     const [renderedImages, setRenderedImages] = useState<string[]>([]);
     const [score, setScore] = useState<number>(0)
+    const [highScore, setHighScore] = useState<number>(0)
 
     const reset = () => {
         setClickedImages([]);
@@ -53,13 +54,26 @@ const Card = () => {
         setClickedImages([...clickedImages, clickedImage]);
         const shuffledArray = shuffleArray(renderedImages)
         setRenderedImages(shuffledArray)
-        setScore(score + 1)
+        setScore((prevScore) => {
+            const newScore = prevScore + 1;
+            if (newScore > highScore) {
+                setHighScore(newScore);
+            }
+
+            if (newScore === 9) {
+                alert("You win!");
+                reset();
+            }
+
+            return newScore;
+        });
     };
 
 
     return (
         <>
-            <div>{score}</div>
+            <div>Score: {score}</div>
+            <div>High Score: {highScore}</div>
             <div className="main">
                 {renderedImages.map((imageUrl, index) => {
                     return (
